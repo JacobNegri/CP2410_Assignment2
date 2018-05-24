@@ -50,7 +50,7 @@ def run_ai_mode(Tree):
     if char == 'O':
         winner = None
         while winner is None:
-            mover = board.checkcolmove(1)
+            mover = board.check_move(1)
             board.add_token(mover)
             print(board)
             winner = board.get_winner()
@@ -104,7 +104,7 @@ def run_ai_mode(Tree):
             winner = board.get_winner()
             if winner is not None:
                 break
-            mover = board.checkcolmove(1)
+            mover = board.check_move(1)
             board.add_token(mover)
             print(board)
             Tree = Tree._children[mover]

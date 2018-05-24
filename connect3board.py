@@ -108,7 +108,7 @@ class Connect3Board:
             self._board.append([None] * self._cols)
 
     def move(self):
-        mover = self.checkcolmove()
+        mover = self.check_move()
         self.add_token(mover)
         print(self)
         return mover
@@ -136,20 +136,20 @@ class Connect3Board:
         else:
             return None
 
-    def checkcolmove(self, ai = 0):
-        twopmove = "Player " + self.get_whose_turn() + "'s turn. Choose column (0 to " + str(self._cols) + "): "
-        aimove = "Your turn. Choose column (0 to 2): "
+    def check_move(self, ai = 0):
+        two_player_move = "Player " + self.get_whose_turn() + "'s turn. Choose column (0 to " + str(self._cols) + "): "
+        ai_move = "Your turn. Choose column (0 to 2): "
         if ai == 1:
-            string = aimove
+            string = ai_move
         else:
-            string = twopmove
+            string = two_player_move
         while True:
             try:
                 move = int(input(string))
             except ValueError:
                 continue
             else:
-                if move < 0 or move > self._cols:
+                if move < 0 or move >= self._cols:
                     continue
                 else:
                     return (move)
